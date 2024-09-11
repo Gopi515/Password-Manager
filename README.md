@@ -13,8 +13,12 @@ securely store their passwords, along with the associated account or service
 names. The system also includes functionalities for updating or deleting
 saved passwords, ensuring users can efficiently manage their credentials.
 ![image](https://github.com/user-attachments/assets/beca468c-af5f-4105-b5fa-9378d327f2d4)
-![image](https://github.com/user-attachments/assets/1ffb794d-d7c6-4703-8cea-fb0c6bfce636)
-![image](https://github.com/user-attachments/assets/e05a7ae7-1688-4942-a235-2cb54fa45903)
+![image](https://github.com/user-attachments/assets/2255c6c0-68cd-4b00-a1d4-ef5ba9f8b801)
+![image](https://github.com/user-attachments/assets/dc589b96-fb89-412c-abc8-b72ff6538469)
+
+
+
+
 
 
 
