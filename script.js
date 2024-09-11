@@ -263,97 +263,100 @@ generateBtn.addEventListener('click', () => {
 //-----------------------------------------------------------------------------------------------------
 // Selectors
 
-window.addEventListener('load', () => {
-	const form = document.querySelector("#new-task-form");
-	const input = document.querySelector("#new-task-input");
-	const list_el = document.querySelector("#tasks");
+window.addEventListener("load", () => {
+  const form = document.querySelector("#new-task-form");
+  const input = document.querySelector("#new-task-input");
+  const list_el = document.querySelector("#tasks");
 
-	// Load tasks from localStorage
-	function loadTasks() {
-		const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-		tasks.forEach(task => {
-			addTaskToDOM(task.text, task.isReadOnly);
-		});
-	}
+  // Load tasks from localStorage
+  function loadTasks() {
+    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks.forEach((task) => {
+      addTaskToDOM(task.text, task.isReadOnly);
+    });
+  }
 
-	// Add task to DOM and localStorage
-	function addTaskToDOM(taskText, isReadOnly = true) {
-		const task_el = document.createElement('div');
-		task_el.classList.add('task');
+  // Add task to DOM and localStorage
+  function addTaskToDOM(taskText, isReadOnly = true) {
+    const task_el = document.createElement("div");
+    task_el.classList.add("task");
 
-		const task_content_el = document.createElement('div');
-		task_content_el.classList.add('content');
+    const task_content_el = document.createElement("div");
+    task_content_el.classList.add("content");
 
-		task_el.appendChild(task_content_el);
+    task_el.appendChild(task_content_el);
 
-		const task_input_el = document.createElement('input');
-		task_input_el.classList.add('text');
-		task_input_el.type = 'text';
-		task_input_el.value = taskText;
-		task_input_el.setAttribute('readonly', isReadOnly ? 'readonly' : '');
+    const task_input_el = document.createElement("input");
+    task_input_el.classList.add("text");
+    task_input_el.type = "text";
+    task_input_el.value = taskText;
+    task_input_el.setAttribute("readonly", isReadOnly ? "readonly" : "");
 
-		task_content_el.appendChild(task_input_el);
+    task_content_el.appendChild(task_input_el);
 
-		const task_actions_el = document.createElement('div');
-		task_actions_el.classList.add('actions');
-		
-		const task_edit_el = document.createElement('button');
-		task_edit_el.classList.add('edit');
-		task_edit_el.innerText = isReadOnly ? 'Edit' : 'Save';
+    const task_actions_el = document.createElement("div");
+    task_actions_el.classList.add("actions");
 
-		const task_delete_el = document.createElement('button');
-		task_delete_el.classList.add('delete');
-		task_delete_el.innerText = 'Delete';
+    const task_edit_el = document.createElement("button");
+    task_edit_el.classList.add("edit");
+    task_edit_el.innerText = isReadOnly ? "Edit" : "Save";
 
-		task_actions_el.appendChild(task_edit_el);
-		task_actions_el.appendChild(task_delete_el);
+    const task_delete_el = document.createElement("button");
+    task_delete_el.classList.add("delete");
+    task_delete_el.innerText = "Delete";
 
-		task_el.appendChild(task_actions_el);
+    task_actions_el.appendChild(task_edit_el);
+    task_actions_el.appendChild(task_delete_el);
 
-		list_el.appendChild(task_el);
+    task_el.appendChild(task_actions_el);
 
-		// Edit button event listener
-		task_edit_el.addEventListener('click', () => {
-			if (task_edit_el.innerText.toLowerCase() === "edit") {
-				task_edit_el.innerText = "Save";
-				task_input_el.removeAttribute("readonly");
-				task_input_el.focus();
-			} else {
-				task_edit_el.innerText = "Edit";
-				task_input_el.setAttribute("readonly", "readonly");
-				saveTasksToLocalStorage(); // Save tasks after editing
-			}
-		});
+    list_el.appendChild(task_el);
 
-		// Delete button event listener
-		task_delete_el.addEventListener('click', () => {
-			list_el.removeChild(task_el);
-			saveTasksToLocalStorage(); // Save tasks after deletion
-		});
-	}
+    // Edit button event listener
+    task_edit_el.addEventListener("click", () => {
+      if (task_edit_el.innerText.toLowerCase() === "edit") {
+        task_edit_el.innerText = "Save";
+        task_input_el.removeAttribute("readonly");
+        task_input_el.focus();
+      } else {
+        task_edit_el.innerText = "Edit";
+        task_input_el.setAttribute("readonly", "readonly");
+        saveTasksToLocalStorage(); // Save tasks after editing
+      }
+    });
 
-	// Save tasks to localStorage
-	function saveTasksToLocalStorage() {
-		const tasks = Array.from(document.querySelectorAll('.task')).map(task => {
-			const text = task.querySelector('.text').value;
-			const isReadOnly = task.querySelector('.text').hasAttribute('readonly');
-			return { text, isReadOnly };
-		});
-		localStorage.setItem('tasks', JSON.stringify(tasks));
-	}
+    // Delete button event listener
+    task_delete_el.addEventListener("click", () => {
+      list_el.removeChild(task_el);
+      saveTasksToLocalStorage(); // Save tasks after deletion
+    });
+  }
 
-	// Add new task event listener
-	form.addEventListener('submit', (e) => {
-		e.preventDefault();
+  // Save tasks to localStorage
+  function saveTasksToLocalStorage() {
+    const tasks = Array.from(document.querySelectorAll(".task")).map((task) => {
+      const text = task.querySelector(".text").value;
+      const isReadOnly = task.querySelector(".text").hasAttribute("readonly");
+      return { text, isReadOnly };
+    });
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }
 
-		const task = input.value.trim();
-		if (task === '') return; // Don't add empty tasks
+  // Add new task event listener
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-		addTaskToDOM(task);
-		saveTasksToLocalStorage(); // Save new task
-		input.value = '';
-	});
+    const task = input.value.trim();
+    if (task === "") {
+      alert("Please enter a password before saving."); // Show an alert
+      return; // Don't add empty tasks
+    }
 
-	// Load existing tasks on page load
-	loadTasks();
+    addTaskToDOM(task);
+    saveTasksToLocalStorage(); // Save new task
+    input.value = "";
+  });
+
+  // Load existing tasks on page load
+  loadTasks();
 });
