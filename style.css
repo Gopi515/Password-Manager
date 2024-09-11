@@ -30,8 +30,8 @@
 }
 
 body {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background: linear-gradient(231deg, rgba(22, 6, 40, 1) 0%, rgba(52, 28, 79, 1) 50%, rgba(88, 7, 125, 1) 100%);
 }
 
@@ -48,10 +48,13 @@ body {
     padding: 5px;
     color: yellow;
 }
+
 .tab{
     color: aliceblue;
     font-size: 20px;
+    cursor: pointer;
 }
+
 .tab-container{
     width:90%;
     max-width: 550px;
@@ -214,7 +217,8 @@ h1 {
     color: var(--vb-yellow);
     font-weight: 600;
     font-size: 1.25rem;
-  }
+    cursor: pointer;
+}
 
 .check {
     display: flex;
@@ -260,6 +264,7 @@ h1 {
     background-color: transparent;
     border:none;
     outline:none;
+    cursor: pointer;
 }
 
 .tooltip {
@@ -364,14 +369,16 @@ input, button {
 }
 
 #new-task-submit {
-    color: var(--pink);
     font-size: 1.25rem;
     font-weight: 700;
-    background-image: linear-gradient(to right, var(--pink), var(--purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--pink);
+    background-color: var(--darkest);
+    /* -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
     cursor: pointer;
     transition: 0.4s;
+    border-radius: 1rem;
+    padding: 1rem;
 }
 
 #new-task-submit:hover {
@@ -382,13 +389,13 @@ input, button {
     opacity: 0.6;
 }
 
-.div2{
+/* .div2{
     display: flex;
     background-color: var(--darkest);
     border-radius: 1rem;
     padding-left: 10px;
     padding-right: 10px;
-}
+} */
 
 main {
     flex: 1 1 0%;
