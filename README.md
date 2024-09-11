@@ -14,7 +14,8 @@ names. The system also includes functionalities for updating or deleting
 saved passwords, ensuring users can efficiently manage their credentials.
 ![image](https://github.com/user-attachments/assets/beca468c-af5f-4105-b5fa-9378d327f2d4)
 ![image](https://github.com/user-attachments/assets/2255c6c0-68cd-4b00-a1d4-ef5ba9f8b801)
-![image](https://github.com/user-attachments/assets/dc589b96-fb89-412c-abc8-b72ff6538469)
+![image](https://github.com/user-attachments/assets/b0e3174b-b93c-4bbe-b0e1-fc95c02f8cd0)
+
 
 
 
